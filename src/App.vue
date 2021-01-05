@@ -1,32 +1,37 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: slimmerYu
+ * @Date: 2020-12-29 10:28:46
+ * @LastEditors: slimmerYu
+ * @LastEditTime: 2021-01-05 15:41:34
+-->
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-main class="grey lighten-4">
+      <Navbar/>
+      <!-- 外边距 mx-4 -->
+      <v-main class="mx-4 mb-4">
+        <router-view></router-view>
+      </v-main>
+      
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
+import Navbar from '@/components/Navbar'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: 'App',
+  components:{
+    Navbar
+  },
+  data(){
+    return{
+      
+    }
+  },
+};
+</script>
