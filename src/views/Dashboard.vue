@@ -4,7 +4,7 @@
  * @Author: slimmerYu
  * @Date: 2020-12-29 10:28:46
  * @LastEditors: slimmerYu
- * @LastEditTime: 2021-01-05 14:33:27
+ * @LastEditTime: 2021-01-06 08:52:16
 -->
 <template>
   <div class="dashboard">
@@ -59,7 +59,7 @@
         </v-tooltip>
       </v-row>
       <v-card flat v-for="project in projects" :key="project.title">
-        <v-row :class="'pa-3 project ${project.status}'">
+        <v-row :class="'pa-3 project '+project.status">
           <v-col xs="12" sm="12" md="6">
             <div class="caption grey--text">Project title</div>
             <div>{{project.title}}</div>
@@ -76,7 +76,7 @@
             <!-- <div class="caption grey--text">Status</div>
             <div>{{project.status}}</div> -->
             <div class="text-right">
-              <v-chip small :class="'white--text caption my-2 ${project.status}'" >{{project.status}}</v-chip>
+              <v-chip small :class="'white--text caption my-2 '+project.status" >{{project.status}}</v-chip>
             </div>
           </v-col>
           
@@ -175,15 +175,15 @@ export default {
 
     border-left: 4px solid tomato;
   }
-  .v-chip.complete{
+  .white--text.caption.v-chip.complete{
     background: #3cd1c2;
 
   }
-  .v-chip.ongoing{
+  .white--text.caption.v-chip.ongoing{
 
     background: orange;
   }
-  .v-chip.overdue{
+  .white--text.caption.v-chip.overdue{
 
     background: tomato;
   }

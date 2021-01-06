@@ -4,7 +4,7 @@
  * @Author: slimmerYu
  * @Date: 2021-01-01 17:59:31
  * @LastEditors: slimmerYu
- * @LastEditTime: 2021-01-05 17:31:16
+ * @LastEditTime: 2021-01-06 13:16:34
 -->
 <template>
   <nav >
@@ -17,6 +17,30 @@
         <span>Ninja</span>
       </v-app-bar-title>
       <v-spacer></v-spacer>
+      <!-- dropdown menu -->
+      <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          text
+          color="grey"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon left>expand_more</v-icon>
+          <span>menu</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(link, index) in links"
+          :key="index"
+          router :to="link.route"
+        >
+          <v-list-item-title>{{ link.text}}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
       <v-btn text color="white" class="grey--text">
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
@@ -31,6 +55,9 @@
           <p class="white--text subheading mt-1">
             The Net Ninja
           </p>
+        </v-col>
+        <v-col class="mt-4 mb-3">
+          <Popup/>
         </v-col>
       </v-row>
       <v-list text>
@@ -48,8 +75,12 @@
 </template>
 
 <script>
+import Popup from './Popup'
 
 export default {
+  components: {
+    Popup
+  },
   data(){
     return{
       drawer: false,
